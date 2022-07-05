@@ -1,0 +1,18 @@
+<!--Modèle de page venant de Bootstrap-->
+<!--La page page-title.html sera appelée par la page d'accueil-->
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/style.css">
+    <meta charset="UTF-8">
+    <title>TCPP</title>
+</head>
+<body>
+<!--fragment qui sera affiché dans les autres pages-->
+<div class="container-fluid text-center" th:fragment="page-title (title)">
+    <br>
+    <h1 th:text="${title}">Application pour le Tennis Club du Pays de Plouay</h1>
+</div>
+</body>
+</html>

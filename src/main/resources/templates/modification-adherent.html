@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+		integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+	<link rel="stylesheet" href="/css/style.css">
+	<meta charset="UTF-8">
+	<title>Les adh&eacute;rents</title>
+</head>
+
+<body>
+	<!--division qui va charger la page header.html -->
+	<div th:replace="fragments/header :: header"></div>
+
+	<!--division formulaire de modification-->
+	<div class="conteneur-global">
+		<h2>Modification Adh&eacute;rent</h2>
+		<form th:action="@{/modificationAdherent}" method="POST" th:object="${adherent}">
+			<!-- Id Adherent -->
+			<label for="nom" >Id :</label>
+			<input type="text" id="idAdherent" readonly="readonly" th:field="*{idAdherent}"/>
+			<span class="alert-danger" th:errors="*{idAdherent}" /><br />
+
+			<div>
+				<!--Nom -->
+				<label for="nom">Nom : </label>
+				<input type="text" id="nom" th:field="*{nom}" required /><a>&nbsp;Champ Obligatoire</a>
+				<span class="alert-danger" th:errors="*{nom}" /><br />
+	
+				<!--Prenom -->
+				<label for="prenom">Pr&eacute;nom : </label>
+				<input type="text" id="prenom" th:field="*{prenom}" required /><a>&nbsp;Champ Obligatoire</a>
+				<span class="alert-danger" th:errors="*{prenom}" /><br />
+			</div>
+			
+			<!--Adresse -->
+			<label for="adresse">Adresse : </label>
+			<input type="text" id="adresse" th:field="*{adresse}" />
+			<span class="alert-danger" th:errors="*{adresse}" /><br />
+
+			<!--Ville -->
+			<label for="ville">Ville : </label>
+			<input type="text" id="ville" th:field="*{ville}" />
+			<span class="alert-danger" th:errors="*{ville}" /><br />
+
+			<!--Code postal -->
+			<label for="codepostal">Code Postal : </label>
+			<input type="number" id="codepostal" th:field="*{codePostal}" />
+			<span class="alert-danger" th:errors="*{codePostal}" /><br />
+
+			<!--Age -->
+			<label for="age">Age : </label>
+			<input type="number" id="age" th:field="*{age}" required /><a>&nbsp;Champ Obligatoire</a>
+			<span class="alert-danger" th:errors="*{age}" /><br />
+
+			<!--Sexe -->
+			<div>
+				<label for="sexe">Sexe : </label><a>&nbsp;Champ Obligatoire</a>
+				
+				<label for="sexe1">F&eacute;minin</label>
+				<input type="radio" id="sexe1" name="sexe" th:value="FEMININ" th:field="*{sexe}">
+
+				<label for="sexe2">Masculin</label>
+				<input type="radio" id="sexe2" name="sexe" th:value="MASCULIN" th:field="*{sexe}">
+
+				<span class="alert-danger" th:errors="*{sexe}" /><br />
+			</div>
+
+			<!--Date de naissance -->
+			<label for="datenaissance">Date de naissance : </label>
+			<input type="date" id="datenaissance" th:field="*{dateNaissance}" required /><a>&nbsp;Champ Obligatoire</a>
+			<span class="alert-danger" th:errors="*{dateNaissance}" /><br />
+
+			<!--Telephone fixe -->
+			<label for="telephonefixe">T&eacute;l&eacute;phone Fixe : </label>
+			
+			<input type="tel" name="tel" id="telephonefixe" th:field="*{telephoneFixe}" maxlength="10"
+				placeholder="01 23 45 67 89" />
+			<span class="alert-danger" th:errors="*{telephoneFixe}" /><br />
+
+			<!--Telephone portable -->
+			<label for="telephonemobile">T&eacute;l&eacute;phone Portable : </label>
+			
+			<input type="tel" name="tel" id="telephonemobile" th:field="*{telephoneMobile}" maxlength="10"
+				placeholder="01 23 45 67 89" />
+			<span class="alert-danger" th:errors="*{telephoneMobile}" /><br />
+
+			<!--Mail -->
+			<label for="mail">Adresse Mail : </label>
+			<input type="email" id="email" th:field="*{mail}" />
+			<span class="alert-danger" th:errors="*{mail}" /><br />
+
+			<!--Certificat Medical Valide ? -->
+			<div>
+				<label for="certificatmedical">Certificat M&eacute;dical Valide : </label>
+				
+				<label for="certificatmedical1">OUI</label>
+				<input type="radio" id="sexe1" name="certificatmedical" th:value="OUI"
+					th:field="*{certificatMedicalValide}">
+
+				<label for="certificatmedical2">NON</label>
+				<input type="radio" id="sexe2" name="certificatmedical" th:value="NON"
+					th:field="*{certificatMedicalValide}">
+
+				<span class="alert-danger" th:errors="*{certificatMedicalValide}" /><br />
+			</div>
+
+			<!--Date du certificat medical -->
+			<label for="datecertificatmedical">Date du certificat m&eacute;dical : </label>
+			<input type="date" id="datecertificatmedical" th:field="*{dateCertificatMedical}" />
+			<span class="alert-danger" th:errors="*{dateCertificatMedical}" /><br />
+
+			<!--Date adhésion -->
+			<label for="dateadhesion">Date adh&eacute;sion : </label>
+			<input type="date" id="dateadhesion" th:field="*{dateAdhesion}" required /><a>&nbsp;Champ Obligatoire</a>
+			<span class="alert-danger" th:errors="*{dateAdhesion}" /><br />
+
+			<!--Numéro Licence-->
+			<label for="numerolicence">Num&eacute;ro Licence : </label>
+			<input type="text" id="numerolicence" th:field="*{numeroLicence}" />
+			<span class="alert-danger" th:errors="*{numeroLicence}" /><br />
+
+			<!--Classement Simple-->
+			<label for="classementsimple">Classement Simple : </label>
+			<input type="text" id="classementsimple" th:field="*{classementSimple}" />
+			<span class="alert-danger" th:errors="*{classementSimple}" /><br />
+
+			<!--Classement Double-->
+			<label for="classementdouble">Classement Double : </label>
+			<input type="text" id="classementdouble" th:field="*{classementDouble}" />
+			<span class="alert-danger" th:errors="*{classementDouble}" /><br />
+
+			<!--Type de cotisation -->
+			<label for="typecotisation">Type de cotisation : </label>
+			<select id="typecotisation" th:field="*{typeCotisation}">
+				<!--je génére une balise option pour chaque element de ma liste "listeTypeCotisation" présente dans le modèle -->
+				<option th:each="typecotisation : ${listeTypeCotisation}" th:value="${typecotisation.idTypeCotisation}"
+					th:text="${typecotisation.categorieCotisation + typecotisation.detailCotisation}" />
+			</select><a>&nbsp;Champ Obligatoire</a>
+			<span class="alert-danger" th:errors="*{typeCotisation}" /><br />
+
+			<!--Type de licence-->
+			<label for="typelicence">Type de licence : </label>
+			<select id="typelicence" th:field="*{typeLicence}">
+				<!--je génére une balise option pour chaque element de ma liste "listeTypeLicence" présente dans le modèle -->
+				<option th:each="typelicence : ${listeTypeLicence}" th:value="${typelicence.idTypeLicence}"
+					th:text="${typelicence.categorieLicence}" />
+			</select><a>&nbsp;Champ Obligatoire</a>
+			<span class="alert-danger" th:errors="*{typeLicence}" /><br />
+
+			<button type="submit">Valider</button>
+		</form>
+	</div>
+</body>
+</html>

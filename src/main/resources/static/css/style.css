@@ -1,0 +1,90 @@
+label{
+	color:rgb(0, 128, 255);
+	display: inline-block;
+	width: 200px;
+	height: 30px;
+	text-align: right
+}
+
+button{
+	margin-left: 200px;
+	padding: 15px;
+	background-color: rgb(0, 128, 255);
+	color: white;
+	border: 1px solid rgb(255, 128, 64); /* Green */
+}
+
+button:hover {
+  background-color: rgb(255, 128, 64);
+  color: rgb(0, 128, 255);
+}
+
+h3{
+	color:rgb(0, 128, 255);
+	text-align:center;
+}
+
+span{
+	color: rgb(255, 128, 0);
+}
+
+.filter-button{
+	margin-left: 10px;
+	padding: 10px;
+}
+
+.confirmation{
+	color: green;
+}
+
+.alert-danger{
+	color : red;
+	margin-left: 10px;
+}
+
+nav{
+	border-bottom: 1px solid #ccc;
+}
+
+nav ul{
+	display : flex;
+	list-style: none;
+}
+
+nav ul li {
+	margin-right: 30px;
+}
+
+table{
+	 border-collapse: collapse;
+	 border: 1px solid black;
+}
+
+table th, table td{
+	padding : 10px;
+	border: 1px solid black;
+}
+
+
+/*Les concepts de base pour flexbox
+Le module des boîtes flexibles, aussi appelé « flexbox »,
+ a été conçu comme un modèle de disposition unidimensionnel
+  et comme une méthode permettant de distribuer l'espace entre
+   des objets d'une interface ainsi que de les aligner.*/
+.conteneur-global{
+	display: flex;	/*conteneur flexible*/
+	flex-direction: column; /*axe principal en colonne - axe secondaire en ligne*/
+	align-items: center;  /*La propriété align-items permet d'aligner les éléments le long de l'axe secondaire.*/
+	justify-content: center; /*justify-content afin d'aligner les éléments le long de l'axe principal 
+							dans la direction définie par flex-direction.*/
+	background-color: rgb(255, 255, 255);
+	
+}
+
+p{
+	font-size: 1.5em;
+}
+
+#conteneur-lien-ajout{
+	font-size: 1.5em;
+}

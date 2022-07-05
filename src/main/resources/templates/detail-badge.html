@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+		integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+	<link rel="stylesheet" href="/css/style.css">
+	<meta charset="UTF-8">
+	<title>D&eacute;tail du badge</title>
+</head>
+
+<body>
+	<!--division qui va charger la page header.html -->
+	<div th:replace="fragments/header :: header"></div>
+
+	<!--division affichage des détails -->
+	<div class="conteneur-global">
+		<h3>Detail du badge num&eacute;ro: <span th:text="${badge.numeroBadge}" /> </h3>
+
+		<h4>Numero de s&eacute;rie: <span th:text="${badge.numeroSerie}" /></h4>
+
+		<h4>Montant Caution: <span th:text="${badge.montantCaution}" /></h4>
+
+		<h4>Caution Vers&eacute;e: <span th:text="${badge.cautionVersee}" /></h4>
+
+		<h4>Date acquisition: <span th:text="${badge.dateAcquisition}" /></h4>
+
+		<h4>Statut: <span th:text="${badge.statusDuBadge.status}" /></h4>
+
+		<h4>Possesseur du badge: <span th:text="${badge.adherentPossesseurDuBadge.nom}" /></h4>
+	</div>
+</body>
+</html>

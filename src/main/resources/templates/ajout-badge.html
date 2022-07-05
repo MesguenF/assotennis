@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+		integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+	<link rel="stylesheet" href="/css/style.css">
+	<meta charset="UTF-8">
+	<title>Les badges</title>
+</head>
+
+<body>
+	<!--division qui va charger la page header.html -->
+	<div th:replace="fragments/header :: header"></div>
+
+	<div class="conteneur-global">
+		<h2>Ajout Badge</h2>
+		<form th:action="@{/ajoutBadge}" method="POST" th:object="${badge}">
+
+			<!--Numéro badge-->
+			<label for="numerobadge">Num&eacute;ro de badge : </label>
+			<input type="number" id="numerobadge" th:field="*{numeroBadge}" required/><a>&nbsp;Champ Obligatoire</a>
+			<span class="alert-danger" th:errors="*{numeroBadge}" /><br />
+
+			<!--Numéro série-->
+			<label for="numeroserie">Num&eacute;ro de s&eacute;rie : </label>
+			<input type="text" id="numeroserie" th:field="*{numeroSerie}" />
+			<span class="alert-danger" th:errors="*{numeroSerie}" /><br />
+
+			<!--Nontant caution-->
+			<label for="montantcaution">Montant caution : </label>
+			<input type="number" id="montantcaution" th:field="*{montantCaution}" required/><a>&nbsp;Champ Obligatoire</a>
+			<span class="alert-danger" th:errors="*{montantCaution}" /><br />
+
+			<!--Caution versee ? -->
+			<div>
+				<label for="cautionversee">Caution vers&eacute;e :</label><a>&nbsp;Champ Obligatoire</a>
+				
+				<label for="cautionversee1">OUI</label>
+				<input type="radio" id="cautionversee1" name="cautionversee" th:value="OUI" th:field="*{cautionVersee}" required>
+
+				<label for="cautionversee2">NON</label>
+				<input type="radio" id="cautionversee2" name="cautionversee" th:value="NON" th:field="*{cautionVersee}" required>
+
+				<span class="alert-danger" th:errors="*{cautionVersee}" /><br />
+			</div>
+
+			<!--Date acquisition badge -->
+			<label for="dateacquisition">Date acquisition : </label>
+			<input type="date" id="dateacquisition" th:field="*{dateAcquisition}" required/><a>&nbsp;Champ Obligatoire</a>
+			<span class="alert-danger" th:errors="*{dateAcquisition}" /><br />
+
+
+			<!--Status du badge-->
+			<label for="statusDuBadge">Status du badge : </label>
+			<select id="statusDuBadge" th:field="*{statusDuBadge}">
+				<!--je génére une balise option pour chaque element de ma liste "listeStatus" présente dans le modèle -->
+				<option th:each="statusDuBadge : ${listeStatus}" th:value="${statusDuBadge.idStatusBadge}"
+					th:text="${statusDuBadge.status}" />
+			</select><a>&nbsp;Champ Obligatoire</a>
+			<span class="alert-danger" th:errors="*{statusDuBadge}" /><br />
+
+			<!--Possesseur du badge -->
+			<label for="adherentPossesseurDuBadge">Possesseur du badge : </label>
+			<select id="adherentPossesseurDuBadge" th:field="*{adherentPossesseurDuBadge}">
+				<!--je génére une balise option pour chaque element de ma liste "listeAdherentPossesseurDuBadge" présente dans le modèle -->
+				<option th:each="adherentPossesseurDuBadge : ${listeAdherentPossesseurDuBadge}"
+					th:value="${adherentPossesseurDuBadge.idAdherent}" th:text="${adherentPossesseurDuBadge.nom}" />
+			</select><a>&nbsp;Champ Obligatoire</a>
+			<span class="alert-danger" th:errors="*{adherentPossesseurDuBadge}" /><br />
+
+			<button type="submit">Valider</button>
+		</form>
+	</div>
+</body>
+</html>

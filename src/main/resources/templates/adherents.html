@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+		integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+	<link rel="stylesheet" href="/css/style.css">
+	<meta charset="UTF-8">
+	<title>Les adh&eacute;rents</title>
+</head>
+
+<body>
+	<!--division qui va charger la page header.html -->
+	<div th:replace="fragments/header :: header"></div>
+
+	<div class="conteneur-global">
+	
+		<!--lien ajout-adherent-->
+		<div id="conteneur-lien-ajout">
+			<a th:href="@{/ajoutAdherent}">Ajouter un adh&eacute;rent</a>
+		</div>
+		
+		<!--séparateur-->
+		<hr noshade
+			style="width:600px; color:rgb(0, 128, 255); height:5px; text-align:center; border:2px solid rgb(0, 128, 255);">
+		
+		<!--Barre de recherche--> 
+		<form>
+			<label>Recherche adh&eacute;rent:</label>
+			<input name="nom" type="text" placeholder="nom de l'adh&eacute;rent"/>
+			<button class="filter-button">Rechercher</button>
+		</form>
+		
+		<!--séparateur-->
+		<hr noshade
+			style="width:600px; color:rgb(0, 128, 255); height:5px; text-align:center; border:2px solid rgb(0, 128, 255);">
+			
+		<!--id donne un nom à la balise div pour l'identifier dans le css-->
+		<div id="conteneur-table">
+			<h3>Liste des adh&eacute;rents</h3>
+			<!--tableau-->
+			<table>
+				<!--section de l'en tête du tableau-->
+				<thead>
+					<!--ligne de tableau-->
+					<tr>
+						<!--cellule d'en tête-->
+						<th>Nom</th>
+						<th>Pr&eacute;nom</th>
+						<th>Age</th>
+						<th>Sexe</th>
+						<th>Certificat m&eacute;dical valide</th>
+						<th>Date certificat m&eacute;dical</th>
+						<th>Date adh&eacute;sion</th>
+						<th>Num&eacute;ro Licence</th>
+						<th>Classement Simple</th>
+						<th>Classement Double</th>
+						<th>Type cotisation</th>
+						<th>Type licence</th>
+					</tr>
+				</thead>
+				<!--section du corps du tableau-->
+				<tbody>
+					<!--ligne de tableau-->
+					<tr th:each="adherent : ${adherents}">
+						<!--cellule-->
+						<td th:text="${adherent.nom}" />
+						<td th:text="${adherent.prenom}" />
+						<td th:text="${adherent.codePostal}" />-->
+						<td th:text="${adherent.age}" />
+						<td th:text="${adherent.sexe}" />
+						<td th:text="${adherent.certificatMedicalValide}" />
+						<td th:text="${adherent.dateCertificatMedical}" />
+						<td th:text="${adherent.dateAdhesion}" />
+						<td th:text="${adherent.numeroLicence}" />
+						<td th:text="${adherent.classementSimple}" />
+						<td th:text="${adherent.classementDouble}" />
+						<td th:text="${adherent.typeCotisation.categorieCotisation}" />
+						<td th:text="${adherent.typeLicence.categorieLicence}" />
+						<td><a th:href="@{'/detailAdherent/' + ${adherent.idAdherent}}">D&eacute;tail</a></td>
+						<td><a th:href="@{'/modificationAdherent/' + ${adherent.idAdherent}}">Modifier l'adh&eacute;rent</a></td>
+						<td><a th:href="@{'/suppressionAdherent/' + ${adherent.idAdherent}}">Supprimer l'adh&eacute;rent</a></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</body>
+</html>

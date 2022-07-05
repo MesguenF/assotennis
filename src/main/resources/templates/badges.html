@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+		integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+	<link rel="stylesheet" href="/css/style.css">
+	<meta charset="UTF-8">
+	<title>Les badges</title>
+</head>
+
+<body>
+	<!--division qui va charger la page header.html -->
+	<div th:replace="fragments/header :: header"></div>
+
+	<div class="conteneur-global">
+		<!--lien ajout badge-->
+		<div id="conteneur-lien-ajout">
+			<a th:href="@{'/ajoutBadge'}">Ajouter un badge</a>
+		</div>
+		
+		<!--séparateur-->
+		<hr noshade style="width:600px; color:rgb(0, 128, 255); height:5px; text-align:center; border:2px solid rgb(0, 128, 255);">
+
+		<!--tableau des badges-->
+		<div id="conteneur-table">
+			<h3>Liste des badges</h3>
+			<table>
+				<thead>
+					<tr>
+						<th>Num&eacute;ro badge</th>
+						<th>Num&eacute;ro s&eacute;rie</th>
+						<th>Montant caution</th>
+						<th>Caution vers&eacute;e</th>
+						<th>Date de pr&ecirc;t</th>
+						<th>Status badge</th>
+						<th>Adherent possesseur badge</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="badge : ${badges}">
+						<td th:text="${badge.numeroBadge}" />
+						<td th:text="${badge.numeroSerie}" />
+						<td th:text="${badge.montantCaution}" />
+						<td th:text="${badge.cautionVersee}" />
+						<td th:text="${badge.dateAcquisition}" />
+						<td th:text="${badge.statusDuBadge.status}" />
+						<td th:text="${badge.adherentPossesseurDuBadge.nom}" />
+						<td><a th:href="@{'/badgeDetail/' + ${badge.numeroBadge}}">D&eacute;tail</a></td>
+						<td><a th:href="@{'/badgeModification/' + ${badge.numeroBadge}}">Modifier le badge</a></td>
+						<td><a th:href="@{'/badgeSuppression/' + ${badge.numeroBadge}}">Supprimer le badge</a></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+</body>
+</html>

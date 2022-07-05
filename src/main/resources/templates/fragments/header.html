@@ -1,0 +1,35 @@
+<!--Modèle de page venant de Bootstrap-->
+<!--La page header.html sera appelée par les autres pages-->
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" 
+    integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <meta charset="UTF-8">
+    <title>TCPP</title>
+</head>
+<body>
+<!--fragment qui sera affiché dans les autres pages-->
+<nav class="site-header sticky-top py-1" th:fragment="header" style="background-color: rgb(255, 145, 91)">
+    <div class="container d-flex flex-column flex-md-row justify-content-between">
+        <a class="py-2" href="/" aria-label="ProjectManagement">
+            <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-bar-chart-steps" fill="currentColor" 
+            xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" d="M.5 0a.5.5 0 0 1 .5.5v15a.5.5 0 0 1-1 0V.5A.5.5 0 0 1 .5 0z"/>
+                <rect width="5" height="2" x="2" y="1" rx=".5"/>
+                <rect width="8" height="2" x="4" y="5" rx=".5"/>
+                <path d="M6 9.5a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-6a.5.5 0 0 1-.5-.5v-1zm2 4a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-7a.5.5 0 0 1-.5-.5v-1z"/>
+            </svg>
+        </a>
+        
+        <a class="py-2 d-none d-md-inline-block" href="/">Accueil</a>
+        <a class="py-2 d-none d-md-inline-block" th:href="@{/adherents}">Liste des adh&eacute;rents</a>
+        <a class="py-2 d-none d-md-inline-block" th:href="@{/badges}">Liste des badges</a>
+        <a class="py-2 d-none d-md-inline-block" th:href="@{/statusbadges}">Les status d'un badge</a>
+        <a class="py-2 d-none d-md-inline-block" th:href="@{/typecotisations}">Les types de cotisation</a>
+        <a class="py-2 d-none d-md-inline-block" th:href="@{/typelicences}">Les types de licence</a>
+        <a class="py-2 d-none d-md-inline-block" th:href="@{/logout}">Se d&eacute;connecter</a>
+    </div>
+</nav>
+</body>
+</html>

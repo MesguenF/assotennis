@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+		integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+	<link rel="stylesheet" href="/css/style.css">
+	<meta charset="UTF-8">
+	<title>D&eacute;tail de l'adh&eacute;rent</title>
+</head>
+
+<body>
+	<!--division qui va charger la page header.html -->
+	<div th:replace="fragments/header :: header"></div>
+
+	<!--division affichage des détails -->
+	<div class="conteneur-global">
+		<h3>D&eacute;tail de l'adherent :
+			<span th:text="${adherent.nom}" />
+			<span th:text="${adherent.prenom}" />
+		</h3>
+
+		<h4>Adresse: <span th:text="${adherent.adresse}" /> / Ville: <span th:text="${adherent.ville}" /> / Code Postal:
+			<span th:text="${adherent.codePostal}" />
+		</h4>
+
+		<h4>Age: <span th:text="${adherent.age}" /></h4>
+
+		<h4>Sexe: <span th:text="${adherent.sexe}" /></h4>
+
+		<h4>Date de naissance: <span th:text="${#temporals.format(adherent.dateNaissance, 'dd MMMM yyyy')}"></span></h4>
+
+		<h4>T&eacute;l&eacute;phone fixe: <span th:text="${adherent.telephoneFixe}" /> / T&eacute;l&eacute;phone
+			portable: <span th:text="${adherent.telephoneMobile}" /> / Email: <span th:text="${adherent.mail}" /></h4>
+
+		<h4>Certificat m&eacute;dical valide: <span th:text="${adherent.certificatMedicalValide}" /> / Date certificat
+			m&eacute;dical: <span th:text="${#temporals.format(adherent.dateCertificatMedical, 'dd MMMM yyyy')}" /></h4>
+
+		<h4>Date adh&eacute;sion: <span th:text="${#temporals.format(adherent.dateAdhesion, 'dd MMMM yyyy')}" /></h4>
+
+		<h4>Num&eacute;ro Licence <span th:text="${adherent.numeroLicence}" /></h4>
+
+		<h4>Classement Simple: <span th:text="${adherent.classementSimple}" /> / Classement Double: <span
+				th:text="${adherent.classementDouble}" /></h4>
+
+		<h4>Type de cotisation : <span th:text="${adherent.typeCotisation.categorieCotisation}"></span></h4>
+
+		<h4>Type de licence : <span th:text="${adherent.typeLicence.categorieLicence}"></span></h4>
+
+	</div>
+</body>
+</html>
